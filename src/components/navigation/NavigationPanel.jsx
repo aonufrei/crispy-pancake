@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { unit } from "../shared/constants";
 import { nanoid } from "nanoid";
 
+import { Link } from "react-router-dom";
+
 const NavigationContainer = styled.div`
     margin-top: ${unit}px;
     position: sticky;
@@ -33,10 +35,16 @@ const NavigationItem = styled.a`
 
 const NavigationPanel = ({ directions, theme }) => {
     const navigationList = directions.map((direction) => (
-        <NavigationItem key={nanoid()} theme={theme} onClick={direction.click}>
-            <NavigationImage className={direction.iconClass} />
-            {direction.name}
-        </NavigationItem>
+        <Link to={direction.path} style={{ textDecoration: 'none' }}>
+            <NavigationItem
+                key={nanoid()}
+                theme={theme}
+                onClick={direction.click}
+            >
+                <NavigationImage className={direction.iconClass} />
+                {direction.name}
+            </NavigationItem>
+        </Link>
     ));
 
     return <NavigationContainer>{navigationList}</NavigationContainer>;
