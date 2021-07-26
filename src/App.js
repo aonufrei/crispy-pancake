@@ -17,24 +17,28 @@ const theme = {
 const directions = [
     {
         name: `Profile`,
+        iconClass: `fas fa-user-circle`,
         click: () => {
             console.log("Profile clicked");
         },
     },
     {
         name: `Feeds`,
+        iconClass: `fas fa-rss`,
         click: () => {
             console.log("Feeds clicked");
         },
     },
     {
         name: `Friends`,
+        iconClass: `fas fa-users`,
         click: () => {
             console.log("Friends clicked");
         },
     },
     {
         name: `Settings`,
+        iconClass: `fas fa-cog`,
         click: () => {
             console.log("Settings clicked");
         },
@@ -70,12 +74,45 @@ function App() {
             <PageContainer>
                 <MainLayout width={theme.width}>
                     <LeftLayout>
-                        <NavigationPanel directions={directions} />
+                        <NavigationPanel
+                            theme={theme}
+                            directions={directions}
+                        />
                     </LeftLayout>
                     <RightLayout>
                         <Profile
                             profileData={{
-                                name: "Artem Onufrei",
+                                name: "Mark Zuckerberg",
+                                status: "Cool man",
+                                image: "https://content.fortune.com/wp-content/uploads/2018/07/gettyimages-961697338.jpg",
+                                bio: [
+                                    {
+                                        definition: "Gender",
+                                        values: ["Male"],
+                                    },
+                                    {
+                                        definition: "Hobbies",
+                                        values: [
+                                            "Videogames",
+                                            "Reading",
+                                            "Swimming",
+                                        ],
+                                    },
+                                ],
+                                statistics: [
+                                    {
+                                        count: 123,
+                                        definition: "Friends",
+                                    },
+                                    {
+                                        count: 20000,
+                                        definition: "Posts",
+                                    },
+                                    {
+                                        count: 4200000,
+                                        definition: "Subscribers",
+                                    },
+                                ]
                             }}
                             theme={theme}
                         />

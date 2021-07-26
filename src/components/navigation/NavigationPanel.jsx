@@ -10,36 +10,36 @@ const NavigationContainer = styled.div`
     top: ${unit * 8}px;
 `;
 
+const NavigationImage = styled.i`
+    margin-right: ${unit}px;
+`;
+
 const NavigationItem = styled.a`
     display: block;
-    text-styling: none;
     text-decoration: none;
-    color: blue;
+    color: ${(props) => props.theme.primaryColor || "blue"};
     font-size: 20px;
     margin-bottom: ${unit}px;
     position: sticky;
-    transition: .3s all;
-    padding: 10px;
+    transition: 0.3s all;
+    padding: ${unit / 2}px;
     border-radius: 10px;
 
     &:hover {
-        background-color: #ccc;
+        color: white;
+        background-color: ${(props) => props.theme.primaryColor || "#ccc"};
     }
 `;
 
-const NavigationPanel = ({ directions }) => {
-
+const NavigationPanel = ({ directions, theme }) => {
     const navigationList = directions.map((direction) => (
-        <NavigationItem onClick={direction.click}>
+        <NavigationItem key={nanoid()} theme={theme} onClick={direction.click}>
+            <NavigationImage className={direction.iconClass} />
             {direction.name}
         </NavigationItem>
     ));
 
-    return (
-        <NavigationContainer>
-           {navigationList}
-        </NavigationContainer>
-    );
+    return <NavigationContainer>{navigationList}</NavigationContainer>;
 };
 
 export default NavigationPanel;
