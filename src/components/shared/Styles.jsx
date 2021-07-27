@@ -34,3 +34,23 @@ export const Divider = styled.div`
     margin-top: ${props => unit * (props.marginFactor || 1)}px;
     margin-bottom: ${props => unit * (props.marginFactor || 1)}px;
 `;
+
+export const BaseLayout = styled.div`
+    width: ${(props) => props.width}px;
+    display: grid;
+    grid-template-columns: ${props => props.left}fr ${props => props.right}fr;
+    grid-column-gap: ${unit}px;
+`;
+
+export const LeftLayout = styled.div`
+    height: 100%;
+    width: ${unit * 11}px;
+    position: relative;
+`;
+
+export const RightPanel = styled.div`
+    height: 100%;
+    width: ${unit * 11}px;
+    position: relative;
+`;
+

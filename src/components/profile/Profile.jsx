@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import { Paper, Button, Text, Divider } from "../shared/Styles";
 import { unit } from "../shared/constants";
-import { nanoid } from "nanoid";
 import Statistics from "./statistics/Statistics";
 import ProfileAdditional from "./additional/ProfileAdditional";
 

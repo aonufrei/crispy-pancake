@@ -1,15 +1,16 @@
 import logo from "./logo.svg";
 import Profile from "./components/profile/Profile";
+import Feeds from "./components/feeds/Feeds";
 import Header from "./components/header/Header";
 import NavigationPanel from "./components/navigation/NavigationPanel";
 import styled from "styled-components";
+import { BaseLayout, LeftLayout } from "./components/shared/Styles";
 import { unit } from "./components/shared/constants";
 
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     Redirect,
 } from "react-router-dom";
 
@@ -18,20 +19,7 @@ const PageContainer = styled.div`
     justify-content: center;
 `;
 
-const MainLayout = styled.div`
-    width: ${(props) => props.width}px;
-    display: grid;
-    grid-template-columns: 11fr 52fr;
-    grid-column-gap: ${unit}px;
-`;
-
-const LeftLayout = styled.div`
-    height: 100%;
-    width: ${unit * 11}px;
-    position: relative;
-`;
-
-const RightLayout = styled.div`
+const ContentLayout = styled.div`
     display: inline-block;
 `;
 
@@ -112,20 +100,20 @@ function App() {
         <Router>
             <Header theme={theme} />
             <PageContainer>
-                <MainLayout width={theme.width}>
+                <BaseLayout left={11} right={52} width={theme.width}>
                     <LeftLayout>
                         <NavigationPanel
                             theme={theme}
                             directions={directions}
                         />
                     </LeftLayout>
-                    <RightLayout>
+                    <ContentLayout>
                         <Switch>
                             <Route path="/profile">
                                 <Profile profileData={profile} theme={theme} />
                             </Route>
                             <Route path="/feeds">
-                                <div>Feeds</div>
+                                <Feeds theme={theme} feedsList={[]} />
                             </Route>
                             <Route path="/friends">
                                 <div>Friends</div>
@@ -134,17 +122,17 @@ function App() {
                                 <div>Settings</div>
                             </Route>
 
-                            <Route path="/asd">
+                            <Route path="/">
                                 <Redirect
                                     push
                                     to={{
-                                        pathname: "/profile",
+                                        pathname: "/feeds",
                                     }}
                                 />
                             </Route>
                         </Switch>
-                    </RightLayout>
-                </MainLayout>
+                    </ContentLayout>
+                </BaseLayout>
             </PageContainer>
         </Router>
     );

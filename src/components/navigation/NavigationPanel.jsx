@@ -16,7 +16,7 @@ const NavigationImage = styled.i`
     margin-right: ${unit}px;
 `;
 
-const NavigationItem = styled.a`
+const NavigationItem = styled.div`
     display: block;
     text-decoration: none;
     color: ${(props) => props.theme.primaryColor || "blue"};
@@ -35,12 +35,12 @@ const NavigationItem = styled.a`
 
 const NavigationPanel = ({ directions, theme }) => {
     const navigationList = directions.map((direction) => (
-        <Link to={direction.path} style={{ textDecoration: 'none' }}>
-            <NavigationItem
-                key={nanoid()}
-                theme={theme}
-                onClick={direction.click}
-            >
+        <Link
+            key={nanoid()}
+            to={direction.path}
+            style={{ textDecoration: "none" }}
+        >
+            <NavigationItem theme={theme} onClick={direction.click}>
                 <NavigationImage className={direction.iconClass} />
                 {direction.name}
             </NavigationItem>
