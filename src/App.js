@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import Profile from "./components/profile/Profile";
 import Feeds from "./components/feeds/Feeds";
 import Header from "./components/header/Header";
+import Friends from "./components/friends/Friends";
 import NavigationPanel from "./components/navigation/NavigationPanel";
 import styled from "styled-components";
 import { BaseLayout, LeftLayout } from "./components/shared/Styles";
@@ -36,6 +37,7 @@ const directions = [
         iconClass: `fas fa-user-circle`,
         path: "/profile",
         click: () => {
+            window.scrollTo(0, 0);
             console.log("Profile clicked");
         },
     },
@@ -43,7 +45,9 @@ const directions = [
         name: `Feeds`,
         iconClass: `fas fa-rss`,
         path: "/feeds",
+
         click: () => {
+            window.scrollTo(0, 0);
             console.log("Feeds clicked");
         },
     },
@@ -52,6 +56,7 @@ const directions = [
         iconClass: `fas fa-users`,
         path: "/friends",
         click: () => {
+            window.scrollTo(0, 0);
             console.log("Friends clicked");
         },
     },
@@ -60,6 +65,7 @@ const directions = [
         iconClass: `fas fa-cog`,
         path: "/settings",
         click: () => {
+            window.scrollTo(0, 0);
             console.log("Settings clicked");
         },
     },
@@ -116,7 +122,7 @@ function App() {
                                 <Feeds theme={theme} feedsList={[]} />
                             </Route>
                             <Route path="/friends">
-                                <div>Friends</div>
+                               <Friends theme={theme} />
                             </Route>
                             <Route path="/settings">
                                 <div>Settings</div>

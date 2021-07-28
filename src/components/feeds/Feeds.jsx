@@ -8,7 +8,7 @@ import { BaseLayout, RightPanel, Paper, Text } from "../shared/Styles";
 import SectionHeader from "../shared/SectionHeader";
 import { unit } from "../shared/constants";
 import Post from "../post/Post";
-import SelectionList from "./selection-list/SelectionList";
+import SelectionList from "../selection-list/SelectionList";
 
 const FeedsLayout = styled.div`
     width: 100%;
