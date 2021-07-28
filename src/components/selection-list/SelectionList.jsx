@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 import { nanoid } from "nanoid";
-import { Text, Paper } from "../../shared/Styles";
-import { unit } from "../../shared/constants";
+import { Text, Paper } from "../shared/Styles";
+import { unit } from "../shared/constants";
 
 const ItemsContainer = styled(Paper)`
     display: flex;
